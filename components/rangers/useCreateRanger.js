@@ -14,6 +14,7 @@ import {
 import {
   CONNECTABLE_CHANNELS,
   DEPLOY_PHASES,
+  RANGER_FOLDER_ID,
   TONES,
   combinePromptParts,
   parsePromptParts,
@@ -64,7 +65,7 @@ const useRestoreName = (dispatch) =>
  * levels into that map with no optional chaining. Without an explicit
  * `getBridgeVersionAction` in between, the next phase throws.
  */
-const useCreateRanger = ({ orgId, folderId, onDeployed }) => {
+const useCreateRanger = ({ orgId, onDeployed }) => {
   const dispatch = useDispatch();
   const restoreName = useRestoreName(dispatch);
   const [phase, setPhase] = useState(DEPLOY_PHASES.IDLE);
@@ -138,7 +139,7 @@ const useCreateRanger = ({ orgId, folderId, onDeployed }) => {
         name: form.name.trim(),
         flag: true,
         meta: { ranger },
-        ...(folderId ? { folder_id: folderId } : {}),
+        folder_id: RANGER_FOLDER_ID, // always the fixed Rangers folder, not the ambient browsing folder
         ...(description ? { purpose: description } : {}),
       };
 
@@ -161,7 +162,7 @@ const useCreateRanger = ({ orgId, folderId, onDeployed }) => {
         prompt: promptParts ? combinePromptParts(promptParts) : resolvePromptText(rawPrompt),
       };
     },
-    [dispatch, folderId, orgId]
+    [dispatch, orgId]
   );
 
   /**

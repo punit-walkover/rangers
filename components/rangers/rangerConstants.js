@@ -26,6 +26,9 @@ export const CALLSIGN_BY_HEX = RANGER_COLORS.reduce((acc, color) => {
 
 export const DEFAULT_RANGER_COLOR = RANGER_COLORS[5].hex;
 
+// Fixed folder every Ranger is filed into; mirrors gtwy-node/gtwy-ai's RANGER_FOLDER_ID, which gates memory.
+export const RANGER_FOLDER_ID = process.env.NEXT_PUBLIC_RANGER_FOLDER_ID || "6a759880bb5238a667057e72";
+
 /**
  * Channels shown in the Command Center and the wizard's channel step.
  *

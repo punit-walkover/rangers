@@ -81,6 +81,8 @@ const useConnectedChannels = (versionId) => {
 /**
  * Ranger setup is one row per area; the options live in modals so the page stays
  * a short list instead of four stacked panels.
+ *
+ * No "Memory" row here — ranger/user memory is always on server-side, no per-Ranger toggle.
  */
 const RangerSetupSections = () => {
   const { isPublished, isEmbedUser, service, modelName, bridge_functions, reduxPrompt, searchParams } =
