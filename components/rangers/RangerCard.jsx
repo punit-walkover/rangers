@@ -9,11 +9,7 @@ const CHANNEL_BY_KEY = RANGER_CHANNELS.reduce((acc, channel) => {
   return acc;
 }, {});
 
-/**
- * Helmet art per swatch. Fewer helmets exist than swatches, so purple borrows blue and
- * pink borrows red — at 13% opacity behind a radial mask, hue carries the identity and
- * the exact colour does not. (white.jpg ships too, but no swatch claims it yet.)
- */
+/** Helmet art per swatch. Purple borrows blue, pink borrows red — no dedicated art yet. */
 const HELMET_BY_HEX = {
   "#E03131": "red",
   "#1C7ED6": "blue",
@@ -189,13 +185,6 @@ const RangerCard = ({ row, ranger, channels = [], metrics, isLoading, index = 0,
 
         <div className="flex items-start gap-3 pt-[22px]">
           <span className="relative h-10 w-10 flex-none">
-            {onDuty && (
-              <span
-                aria-hidden
-                className="absolute inset-0 block rounded-[12px]"
-                style={{ border: `2px solid ${tint(accent, 0.7)}`, animation: "rgPulse 2.2s ease-out infinite" }}
-              />
-            )}
             <span className="relative grid h-10 w-10 place-items-center rounded-[12px] border border-line bg-card shadow-[0_1px_3px_var(--shadow-tint)]">
               {isLoading ? (
                 <span className="loading loading-spinner loading-xs" />
